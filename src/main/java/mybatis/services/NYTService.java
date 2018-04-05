@@ -21,7 +21,7 @@ import org.springframework.web.client.RestTemplate;
             String fQuery = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+query+"&api-key=75d3534c073a442abbab62367f493b32";
             NYTRoot response = restTemplate.getForObject(
                     fQuery, NYTRoot.class);
-            
+
 
             return  response;
         }
