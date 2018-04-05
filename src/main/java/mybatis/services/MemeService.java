@@ -2,6 +2,7 @@ package mybatis.services;
 import mybatis.mappers.MemeMapper;
 import mybatis.model.meme.MemeResult;
 import mybatis.model.meme.MemeRoot;
+import mybatis.model.meme.MemeSum;
 import mybatis.model.meme.ResponseComparison;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class MemeService {
                 "&apiKey=4c8324fe-84d7-45c8-b63b-fac5122b8c47";
             //boilerplate code
         MemeRoot response = restTemplate.getForObject(fQuery, MemeRoot.class);
+
+        MemeResult[] memeresultarray = response.getResult();
+       MemeResult memeResultObject = memeresultarray[0];
+       MemeSum memeSumObject = memeResultObject.getEntityVotesSummary();
+       int totalVotesSum = memeSumObject.getTotalVotesSum();
+
 
         return  response;
     }
